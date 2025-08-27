@@ -4,7 +4,14 @@
 # @name AppControllerGetHello
 GET {{baseUrl}}/
 
-
 ### ExemploDeRota
 # @name ExemploDeRota
 GET {{baseUrl}}/exemplo/
+
+### ConceitosManual
+# @name ConceitosManual
+GET {{baseUrl}}/conceitos-manual/
+
+### ConceitosAutomatico
+# @name ConceitosAutomatico
+GET {{baseUrl}}/conceitos-automatico/
