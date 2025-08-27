@@ -1,9 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
+import { ConceitosManualService } from './conceitos-manual.service';
 
 @Controller('conceitos-manual')
 export class ConceitosManualController {
+  constructor(
+    private readonly conceitosManualService: ConceitosManualService,
+  ) {}
+
   @Get()
   getConceitosManual(): string {
-    return 'Conceitos Manual!';
+    return this.conceitosManualService.solucionaHome();
   }
 }
