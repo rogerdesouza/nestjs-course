@@ -3,7 +3,9 @@ import { ConceitosAutomaticoService } from './conceitos-automatico.service';
 
 @Controller('conceitos-automatico')
 export class ConceitosAutomaticoController {
-  constructor(private readonly conceitosAutomaticoService: ConceitosAutomaticoService) {}
+  constructor(
+    private readonly conceitosAutomaticoService: ConceitosAutomaticoService,
+  ) {}
 
   @Get()
   getConceitosAutomatico(): string {
