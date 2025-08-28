@@ -2,16 +2,11 @@
 
 ### AppControllerGetHello
 # @name AppControllerGetHello
-GET {{baseUrl}}/
+GET {{baseUrl}}
 
-### ExemploDeRota
-# @name ExemploDeRota
-GET {{baseUrl}}/exemplo/
 
-### ConceitosManual
-# @name ConceitosManual
-GET {{baseUrl}}/conceitos-manual/
-
-### ConceitosAutomatico
-# @name ConceitosAutomatico
-GET {{baseUrl}}/conceitos-automatico/
+# RECADOS
+###
+GET {{baseUrl}}/recados
+###
+GET {{baseUrl}}/recados/1/
