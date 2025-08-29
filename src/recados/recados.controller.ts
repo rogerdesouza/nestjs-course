@@ -1,18 +1,19 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 
 @Controller('recados')
 export class RecadosController {
   // encontrar todos os recados
   @Get()
-  findAll() {
-    return 'Retorna todos os recados';
+  findAll(@Query() pagination: any) {
+    const { limit=10, offset=0 } = pagination;
+    return `Retorna todos os recados. Limit=${limit} e Offset=${offset}.`;
   }
 
   // encontrar um recado
   // @HttpCode(HttpStatus.NOT_FOUND) // mudar o status code do http
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `Retorna um recado com id: ${id}`;
+    return `Retorna um recado com id: ${id}.`;
   }
 
   // criar um novo recado
@@ -32,7 +33,7 @@ export class RecadosController {
 
   // delete um novo recado
   @Delete(':id')
-  delete(@Param('id') id: string) {
-    return `Deletando o recado com id: ${id}`;
+  remove(@Param('id') id: string) {
+    return `Deletando o recado com id: ${id}.`;
   }
 }
