@@ -9,20 +9,20 @@ GET {{baseUrl}}
 ### Lista todos os recados
 GET {{baseUrl}}/recados/?limit=5&offset=10
 ### Lista apenas 1 recado
-GET {{baseUrl}}/recados/1/
+GET {{baseUrl}}/recados/1
 ### Cria 1 recado
-POST {{baseUrl}}/recados/
+POST {{baseUrl}}/recados
 Content-Type: application/json
 
 {
     "recado": "Este é o recado que estou enviando."
 }
 ### Atualiza 1 recado
-PATCH {{baseUrl}}/recados/1/
+PATCH {{baseUrl}}/recados/1
 Content-Type: application/json
 
 {
     "recado": "Este é o recado que estou enviando."
 }
 ### Deleta 1 recado
-DELETE {{baseUrl}}/recados/2/
+DELETE {{baseUrl}}/recados/2

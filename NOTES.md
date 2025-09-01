@@ -7,3 +7,6 @@ install:
 
 extentions:
    rest client
+   reload
+   eslint
+   prettier

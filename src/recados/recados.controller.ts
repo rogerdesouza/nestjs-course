@@ -1,11 +1,20 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 
 @Controller('recados')
 export class RecadosController {
   // encontrar todos os recados
   @Get()
   findAll(@Query() pagination: any) {
-    const { limit=10, offset=0 } = pagination;
+    const { limit = 10, offset = 0 }: any = pagination;
     return `Retorna todos os recados. Limit=${limit} e Offset=${offset}.`;
   }
 
@@ -27,8 +36,8 @@ export class RecadosController {
   update(@Param('id') id: string, @Body() body: any) {
     return {
       id,
-      ...body
-    }
+      ...body,
+    };
   }
 
   // delete um novo recado
