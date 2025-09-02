@@ -3,6 +3,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -14,42 +16,33 @@ import { RecadosService } from './recados.service';
 export class RecadosController {
   constructor(private readonly recadosService: RecadosService) {}
 
-  // encontrar todos os recados
+  @HttpCode(HttpStatus.OK) // mudar o status code do http
   @Get()
   findAll(@Query() pagination: any) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unused-vars
     const { limit = 10, offset = 0 }: any = pagination;
     return this.recadosService.findAll();
   }
 
-  // encontrar um recado
-  // @HttpCode(HttpStatus.NOT_FOUND) // mudar o status code do http
   @Get(':id')
   findOne(@Param('id') id: string) {
     const recado = this.recadosService.findOne(parseInt(id));
     return recado;
   }
 
-  // criar um novo recado
   @Post()
   create(@Body() body: any) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return body;
+    return this.recadosService.create(body);
   }
 
-  // update um novo recado // pode ser patch (partes ou todo) ou put (todo)
+  // update um novo recado - pode ser patch (partes ou todo) ou put (todo)
   @Patch(':id')
   update(@Param('id') id: string, @Body() body: any) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return {
-      id,
-      ...body,
-    };
+    return this.recadosService.update(parseInt(id), body);
   }
 
-  // delete um novo recado
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return `Deletando o recado com id: ${id}.`;
+    return this.recadosService.remove(id);
   }
 }
