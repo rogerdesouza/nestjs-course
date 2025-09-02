@@ -17,6 +17,7 @@ export class RecadosController {
   // encontrar todos os recados
   @Get()
   findAll(@Query() pagination: any) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { limit = 10, offset = 0 }: any = pagination;
     return `Retorna todos os recados. Limit=${limit} e Offset=${offset}.`;
   }
@@ -31,12 +32,14 @@ export class RecadosController {
   // criar um novo recado
   @Post()
   create(@Body() body: any) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return body;
   }
 
   // update um novo recado // pode ser patch (partes ou todo) ou put (todo)
   @Patch(':id')
   update(@Param('id') id: string, @Body() body: any) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return {
       id,
       ...body,
