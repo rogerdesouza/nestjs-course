@@ -8,9 +8,12 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { RecadosService } from './recados.service';
 
 @Controller('recados')
 export class RecadosController {
+  constructor(private readonly recadosService: RecadosService) {}
+
   // encontrar todos os recados
   @Get()
   findAll(@Query() pagination: any) {
