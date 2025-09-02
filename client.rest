@@ -15,14 +15,22 @@ POST {{baseUrl}}/recados
 Content-Type: application/json
 
 {
-    "recado": "Este é o recado que estou enviando."
+  "texto": "Novo recado",
+  "de": "Pedro",
+  "para": "Camila",
+  "lido": false,
+  "data": "2025-09-10T17:39:45.556Z"
 }
 ### Atualiza 1 recado
 PATCH {{baseUrl}}/recados/1
 Content-Type: application/json
 
 {
-    "recado": "Este é o recado que estou enviando."
+  "texto": "Novo recado dia 11",
+  "de": "Camila",
+  "para": "Joana",
+  "lido": false,
+  "data": "2025-09-11T17:39:45.556Z"
 }
 ### Deleta 1 recado
 DELETE {{baseUrl}}/recados/2

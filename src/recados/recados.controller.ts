@@ -19,14 +19,15 @@ export class RecadosController {
   findAll(@Query() pagination: any) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { limit = 10, offset = 0 }: any = pagination;
-    return `Retorna todos os recados. Limit=${limit} e Offset=${offset}.`;
+    return this.recadosService.findAll();
   }
 
   // encontrar um recado
   // @HttpCode(HttpStatus.NOT_FOUND) // mudar o status code do http
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `Retorna um recado com id: ${id}.`;
+    const recado = this.recadosService.findOne(parseInt(id));
+    return recado;
   }
 
   // criar um novo recado
