@@ -1,12 +1,23 @@
 # nestjs-course
 
 install:
-   nvm
-   node
-   npm i -g @nestjs/cli
+
+nvm
+
+node
+
+npm i -g @nestjs/cli
+
+npm i class-validator class-transformer
+
+---
 
 extentions:
-   rest client
-   reload
-   eslint
-   prettier
+
+restclient
+
+reload
+
+eslint
+
+prettier

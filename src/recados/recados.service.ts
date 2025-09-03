@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { RecadoEntity } from './entities/recado.entity';
+import { CreateRecadoDto } from './dto/create-recado.dto';
+import { UpdateRecadoDto } from './dto/update-recado.dto';
 
 @Injectable()
 export class RecadosService {
@@ -25,24 +27,26 @@ export class RecadosService {
   }
 
   findOne(id: number) {
-    const recado = this.recados.find((e) => e.id === id);
+    const recado = this.recados.find(e => e.id === id);
     if (recado) return recado;
     this.throwNotFoundError();
   }
 
-  create(body: any) {
+  create(createRecadoDto: CreateRecadoDto) {
     this.lastId++;
-    const newRecado = {
+    const novoRecado = {
       id: this.lastId,
-      ...body,
+      lido: false,
+      data: new Date(),
+      ...createRecadoDto,
     };
-    this.recados.push(newRecado);
-    return newRecado;
+    this.recados.push(novoRecado);
+    return novoRecado;
   }
 
-  update(id: number, body: any) {
+  update(id: number, updateRecadoDto: UpdateRecadoDto) {
     const recadoExistenteIndex = this.recados.findIndex(
-      (item) => item.id === +id,
+      item => item.id === +id,
     );
 
     if (recadoExistenteIndex < 0) this.throwNotFoundError();
@@ -50,7 +54,7 @@ export class RecadosService {
     const recadoExistente = this.recados[recadoExistenteIndex];
     this.recados[recadoExistenteIndex] = {
       ...recadoExistente,
-      ...body,
+      ...updateRecadoDto,
     };
 
     return this.recados[recadoExistenteIndex];
@@ -59,7 +63,7 @@ export class RecadosService {
   remove(id: string) {
     // existe um cast para transformar uma string em number ----- exemplo +id
     const recadoExistenteIndex = this.recados.findIndex(
-      (item) => item.id === +id,
+      item => item.id === +id,
     );
 
     if (recadoExistenteIndex < 0) this.throwNotFoundError();
